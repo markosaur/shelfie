@@ -9,15 +9,47 @@ class Form extends Component {
             imgurl: ''
         }
     }
+    //handleInputName
+    handleInputName=(val)=>{
+        this.setState({
+            name: val
+        })
+        // console.log(this.state)
+    }
+
+    //handleInputPrice
+    handleInputPrice=(price)=>{
+        this.setState({
+            price: price
+        })
+    }
+    
+    //handleImage
+    handleImage=(img)=>{
+        this.setState({
+            imgurl: img
+        })
+    }
+    
+    //handleCancel
+    handleCancel=()=>{
+        this.setState({
+            name: '',
+            price: '',
+            imgurl: ''
+        })
+        // console.log(this.state)
+    }
+    
 
     render(){
         return (
         <div>
-            <input placeholder= "name"></input>
-            <input placeholder= "price"></input>
-            <input placeholder= "image_url"></input>
+            <input placeholder= "name" onChange={(e)=> this.handleInputName(e.target.value)} value={this.state.name}/>
+            <input placeholder= "price" onChange={(e)=> this.handleInputPrice(e.target.value)} value={this.state.price}/>
+            <input placeholder= "image_url" onChange={(e)=> this.handleImage(e.target.value)} value={this.state.imgurl}/>
             <button>Add Inventory</button>
-            <button>Cancel Inventory</button>
+            <button onClick={()=> this.handleCancel()}>Cancel</button>
 
         {/* <h1>Form</h1> */}
         </div>
