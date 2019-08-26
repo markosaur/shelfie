@@ -8,6 +8,7 @@ const app= express();
 
 const { SERVER_PORT, CONNECTION_STRING } = process.env;
 
+app.use(express.json())
 //middleware
 
 massive(CONNECTION_STRING)
@@ -21,9 +22,8 @@ massive(CONNECTION_STRING)
 // this is where the endpoints will go, we will add these later
 app.get('/api/inventory',shoeCtrl.getShoe)
 app.post('/api/inventory',shoeCtrl.createShoe)
+app.delete('/api/inventory/:id',shoeCtrl.deleteShoe)
 
-
-app.use(express.json())
 
 
 // const port= 4000;

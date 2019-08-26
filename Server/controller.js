@@ -15,21 +15,36 @@ getShoe: (req, res) => {
 },
 
 createShoe: (req,res) => {
-    const dbInstance = req.app.get('db');
+    console.log('where is my shoe')
+    const db = req.app.get('db');
     console.log('how are you'); 
+    const {name, price, image_url} = req.body;
+    console.log(req.body)   
 
-    const {name, price, image_url} =req.body;
-    console.log('fire')   
-
-    dbInstance.create_shoes([name, price, image_url])
+    db.create_shoes([name, price, image_url])
     .then(()=>
-        res.sendStatus(200)).catch(error => {
-            res.status(500).send({errorMessage : 'Something is really wrong, have a nice day'})
-            console.log(error)
+        res.sendStatus(200))
+        .catch(err => {res.status(500).send({errorMessage : 'Something is really wrong, have a nice day'})
+            // console.log(err)
 
-        });
-    
+        });   
+},
+
+deleteShoe: (req,res) => {
+    const db = req.app.get('db');
+    const {id} = req.params;
+
+    db.delte_shoes(id)
 }
+
+
+// db.create_shoes([name, price, image_url])
+// .then(()=>
+//     res.sendStatus(200))
+//     .catch(err => {res.status(500).send({errorMessage : 'Something is really wrong, have a nice day'})
+//         console.log(err)
+
+//     });
 
 // updateFish: (req, res) => {
 //     const {id} =req.param

@@ -21,7 +21,7 @@ componentDidMount = () =>{
 }
 
   getInventory = () =>{
-  axios.get(`api/inventory`).then((res)=>{
+  axios.get('/api/inventory').then((res)=>{
       this.setState({
         inventory: res.data
       })
@@ -34,7 +34,7 @@ render(){
     <div>
       <h1>Hello World</h1>
       <Dashboard inventory={this.state.inventory} />
-      <Form/>
+      <Form getInventory={this.getInventory}/>
       <Header/>
     </div>
   );
